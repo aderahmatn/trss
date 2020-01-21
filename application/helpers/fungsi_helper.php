@@ -1,0 +1,26 @@
+<?php 
+
+function check_already_login(){
+	$CI =& get_instance();
+	$user_session = $CI->session->userdata('nik');
+	if ($user_session) {
+		redirect('dashboard','refresh');
+	}
+}
+
+function check_not_login(){
+	$CI =& get_instance();
+	$user_session = $CI->session->userdata('nik');
+	if (!$user_session) {
+		redirect('auth/login','refresh');
+	}
+}
+
+function check_role(){
+	$CI =& get_instance();
+	$user_session = $CI->session->userdata('role');
+	if ($user_session != '1') {
+		$CI->session->set_flashdata('error', 'Hak akses terbatas!');
+		redirect('dashboard','refresh');
+	}	
+}
