@@ -46,6 +46,33 @@ class Planning extends CI_Controller {
 		}
 	}
 
+	public function upadate($id = null)
+	{
+		$this->form_validation->set_message('required','%s tidak boleh kosong!');
+		$this->form_validation->set_message('numeric','%s harus berupa angka!');
+		$planning = $this->planning_m;
+		$validation = $this->form_validation;
+		$validation->set_rules($planning->rules());
+		$data['line'] = $this->line_m->GetAll();
+		$data['position'] = $this->process_m->GetPosition();
+		$data['process'] = $this->process_m->GetAll();
+		$data['product'] = $this->product_m->GetAll();
+
+		if ($validation->run() == FALSE)
+		{
+			$this->template->load('shared/template', 'planning/edit', $data);
+		}
+		else
+		{
+			$post = $this->input->post(null, TRUE);
+			$planning->add($post);
+			if ($this->db->affected_rows() > 0) {
+				$this->session->set_flashdata('success', 'Planning berhasil disimpan!');
+				redirect('planning/create','refresh');
+			}
+		}
+	}
+
 	public function getProcess()
 	{
 		$id=$this->input->post('id');
