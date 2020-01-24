@@ -10,6 +10,7 @@
   <meta name="author" content="">
 
   <title>TRSS - Login</title>
+  <link rel="icon" href="<?=base_url()?>/favicon.png" type="image/png">
 
   <!-- Custom fonts for this template-->
   <link href="<?php echo base_url('assets/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
