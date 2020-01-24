@@ -46,8 +46,10 @@ class Planning extends CI_Controller {
 		}
 	}
 
-	public function upadate($id = null)
+	public function update($id = null)
 	{
+		if (!isset($id)) redirect('planning');
+		
 		$this->form_validation->set_message('required','%s tidak boleh kosong!');
 		$this->form_validation->set_message('numeric','%s harus berupa angka!');
 		$planning = $this->planning_m;
@@ -58,19 +60,23 @@ class Planning extends CI_Controller {
 		$data['process'] = $this->process_m->GetAll();
 		$data['product'] = $this->product_m->GetAll();
 
-		if ($validation->run() == FALSE)
-		{
-			$this->template->load('shared/template', 'planning/edit', $data);
-		}
-		else
-		{
+		if ($validation->run()) {
 			$post = $this->input->post(null, TRUE);
-			$planning->add($post);
+			$planning->update($post);
 			if ($this->db->affected_rows() > 0) {
-				$this->session->set_flashdata('success', 'Planning berhasil disimpan!');
-				redirect('planning/create','refresh');
+				$this->session->set_flashdata('success', 'Update data planning berhasil!');
+				redirect('planning','refresh');
+			}else{
+				$this->session->set_flashdata('warning', 'Data planning tidak ada yang diupdate!');
+				redirect('planning','refresh');
 			}
 		}
+		$data['planning'] = $this->planning_m->GetAll();
+		if (!$data['planning']) {
+			$this->session->set_flashdata('error', 'Data planning tidak ditemukan!');
+			redirect('planning','refresh');
+		}
+		$this->template->load('shared/template', 'planning/edit', $data);
 	}
 
 	public function getProcess()
@@ -88,6 +94,27 @@ class Planning extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function getDetail()
+	{
+		$id=$this->input->post('rowid');
+		if ($id==null) {
+			$this->session->set_flashdata('warning', 'Data tidak ada ditemukan!');
+				redirect('planning','refresh');
+		}
+		$query=$this->planning_m->GetById($id);
+		$data['planning']=$query->row();	
+		
+		$this->load->view('planning/detail', $data);
+	}
+	public function delete($id)
+	{
+
+		$this->planning_m->delete($id);
+		if ($this->db->affected_rows() > 0) {
+			$this->session->set_flashdata('success', 'Planning berhasil dihapus!');
+			redirect('planning','refresh');
+		}
+	}
 }
 
 /* End of file Planning.php */

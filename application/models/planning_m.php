@@ -55,18 +55,15 @@ class Planning_m extends CI_Model {
 		return $query->result();
 	}
 
-	public function GetAllJoin()
-	{
-		/*$this->db->select('tproduk.*, tline.IdLine AS IdLine, tline.LineName');
-		$this->db->join('tline', 'tproduk.IdLine = tline.IdLine');
-		$this->db->from('tproduk');
-		$query = $this->db->get();
-		return $query->result();*/
-	}
-
 	public function GetById($id)
 	{
-		return $this->db->get_where($this->_table,["IdPlan" => $id])->row();
+		$this->db->from('tplan');
+		$this->db->where('IdPlan', $id);
+		$this->db->join('tposition','tposition.IdPosition=tplan.IdPosition', 'left');
+		$this->db->join('tline','tline.IdLine=tplan.IdLine', 'left');
+		$this->db->join('tproduk','tproduk.IdProduk=tplan.IdPart', 'left');
+		$query = $this->db->get();
+		return $query;
 	}
 
 	public function add()
