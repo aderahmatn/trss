@@ -3,9 +3,14 @@
 		<!-- Collapsable Card -->
 		<div class="card shadow mb-4">
 			<!-- Card Header - Accordion -->
-			<a href="#createProduct" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="createProduct">
-				<h6 class="m-0 font-weight-bold text-primary">Create Product</h6>
-			</a>
+			<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+				<h6 class="m-0 font-weight-bold text-primary">Create Planning</h6>
+				<div class="button">
+					<a class="btn btn-light text-primary btn-sm" type="button" href="<?=base_url('product') ?>"><i class="fas fa-arrow-circle-left"></i>
+						Back
+					</a>
+				</div>
+			</div>
 			<!-- Card Content - Collapse -->
 			<div class="collapse show" id="createProduct">
 				<div class="card-body">
@@ -166,8 +171,8 @@
 		<!-- Default Card Example -->
 		<div class="card mb-4">
 			<div class="card-header">
-				<small>
-				Petunjuk</small>
+				<small><i class="fas fa-info-circle"></i> <b>
+				Petunjuk</b></small>
 			</div>
 			<div class="card-body">
 				<small>

@@ -3,9 +3,14 @@
 		<!-- Collapsable Card -->
 		<div class="card shadow mb-4">
 			<!-- Card Header - Accordion -->
-			<a href="#before" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="before">
-				<h6 class="m-0 font-weight-bold text-primary">Master Planning</h6>
-			</a>
+			<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+				<h6 class="m-0 font-weight-bold text-primary">Data Planning</h6>
+				<div class="button">
+					<a class="btn btn-primary btn-sm" type="button" href="<?=base_url('planning/create') ?>"><i class="fas fa-plus"></i>
+						New Planning
+					</a>
+				</div>
+			</div>
 			<!-- Card Content - Collapse -->
 			<div class="collapse show" id="before">
 				<div class="card-body">
@@ -13,22 +18,22 @@
 						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 							<thead>
 								<tr>
-									<th>Tanggal</th>
-									<th>Position</th>
-									<th>Line</th>
+									<th>No</th>
 									<th>Product</th>
+									<th>Line</th>
+									<th>Process</th>
 									<th>Option</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php 
-
+								$no=1;
 								foreach ($plan as $dt): ?>
 									<tr>
-										<td><?php echo $dt->Date ?></td>
-										<td><?php echo ucfirst($dt->PositionName) ?></td>
-										<td><?php echo ucfirst($dt->LineName)?></td>
+										<td><?php echo $no++ ?></td>
 										<td><?php echo $dt->PartName ?></td>
+										<td><?php echo ucfirst($dt->LineName)?></td>
+										<td><?php echo $dt->ProcessName ?></td>
 
 										<td><a href='#detailPlanning' class='btn btn-sm btn-info' id='custId' data-toggle='modal' data-id="<?php echo $dt->IdPlan ?>"><i class="fa fa-eye"></i></a>
 											<a onclick="deleteConfirm('<?=site_url('planning/delete/'.$dt->IdPlan)?>')" href="#!" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
@@ -66,18 +71,18 @@
 	</div>
 </div>
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('#detailPlanning').on('show.bs.modal', function (e) {
-            var rowid = $(e.relatedTarget).data('id');
+	$(document).ready(function(){
+		$('#detailPlanning').on('show.bs.modal', function (e) {
+			var rowid = $(e.relatedTarget).data('id');
             //menggunakan fungsi ajax untuk pengambilan data
             $.ajax({
-                type : 'post',
-                url : '<?php echo base_url('planning/getDetail');?>',
-                data :  'rowid='+ rowid,
-                success : function(data){
+            	type : 'post',
+            	url : '<?php echo base_url('planning/getDetail');?>',
+            	data :  'rowid='+ rowid,
+            	success : function(data){
                 $('.modal-data').html(data);//menampilkan data ke dalam modal
-                }
-            });
-         });
-    });
-  </script>
+            }
+        });
+        });
+	});
+</script>

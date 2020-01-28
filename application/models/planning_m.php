@@ -7,8 +7,6 @@ class Planning_m extends CI_Model {
 
 	public $IdPlan;
 	public $Date;
-	public $IdPosition;
-	public $IdLine;
 	public $IdProcess;
 	public $IdPart;
 	public $Qty;
@@ -47,9 +45,11 @@ class Planning_m extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('tplan');
-		$this->db->join('tposition','tposition.IdPosition=tplan.IdPosition', 'left');
-		$this->db->join('tline','tline.IdLine=tplan.IdLine', 'left');
+
+		$this->db->join('tprocess','tprocess.IdProcess=tplan.IdProcess', 'left');
 		$this->db->join('tproduk','tproduk.IdProduk=tplan.IdPart', 'left');
+		$this->db->join('tposition','tposition.IdPosition=tproduk.IdPosition', 'left');
+		$this->db->join('tline','tline.Idline=tproduk.IdLine', 'left');
 
 		$query = $this->db->get();
 		return $query->result();
@@ -59,9 +59,10 @@ class Planning_m extends CI_Model {
 	{
 		$this->db->from('tplan');
 		$this->db->where('IdPlan', $id);
-		$this->db->join('tposition','tposition.IdPosition=tplan.IdPosition', 'left');
-		$this->db->join('tline','tline.IdLine=tplan.IdLine', 'left');
+		$this->db->join('tprocess','tprocess.IdProcess=tplan.IdProcess', 'left');
 		$this->db->join('tproduk','tproduk.IdProduk=tplan.IdPart', 'left');
+		$this->db->join('tline','tline.Idline=tproduk.IdLine', 'left');
+		$this->db->join('tposition','tposition.IdPosition=tproduk.IdPosition', 'left');
 		$query = $this->db->get();
 		return $query;
 	}
@@ -71,8 +72,6 @@ class Planning_m extends CI_Model {
 		$post = $this->input->post();
 		$this->IdPlan = $post['id'];
 		$this->Date = $post['dateplann'];
-		$this->IdPosition = $post['position'];
-		$this->IdLine = $post['lineproduct'];
 		$this->IdProcess = $post['processing'];
 		$this->IdPart = $post['product'];
 		$this->Qty = $post['qty'];

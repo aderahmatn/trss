@@ -48,21 +48,21 @@
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item <?php echo $this->uri->segment(1) == 'dashboard' ? 'active': '' ?>">
-        <a class="nav-link" href="<?php echo base_url('dashboard'); ?>">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-        </li>
+      <?php if ($this->session->userdata('role') == 2) { ?>   
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item <?php echo $this->uri->segment(1) == 'dashboard' ? 'active': '' ?>">
+          <a class="nav-link" href="<?php echo base_url('dashboard'); ?>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+          </li>
 
-        <!-- Divider -->
-        <hr class="sidebar-divider">
+          <!-- Divider -->
+          <hr class="sidebar-divider">
 
-        <!-- Heading -->
-        <div class="sidebar-heading">
-          Main Menu
-        </div>
-        <?php if ($this->session->userdata('role') == 2) { ?>   
+          <!-- Heading -->
+          <div class="sidebar-heading">
+            Main Menu
+          </div>
 
           <!-- Nav Item - Pages Collapse Menu -->
           <li class="nav-item <?php echo $this->uri->segment(1) == 'report' ? 'active': '' ?>">
@@ -79,57 +79,52 @@
           </li>
         <?php } ?>
         <?php if ($this->session->userdata('role') == 1) { ?>   
-          <!-- Nav Item - Pages Collapse Menu -->
-          <li class="nav-item <?php echo $this->uri->segment(1) == 'planning' ? 'active': '' ?>">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-              <i class="fas fa-crosshairs"></i>
-              <span>Planning</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="<?php echo site_url('planning') ?>"><i class="fas fa-list"></i>  Browse</a>
-                <a class="collapse-item" href="<?php echo site_url('planning/create') ?>"><i class="fas fa-plus"></i> Create</a>
-              </div>
+          <!-- Nav Item - Dashboard -->
+          <li class="nav-item <?php echo $this->uri->segment(1) == 'dashboard' ? 'active': '' ?>">
+            <a class="nav-link" href="<?php echo base_url('dashboard'); ?>">
+              <i class="fas fa-fw fa-tachometer-alt"></i>
+              <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+              Main Menu
             </div>
-          </li>
-          <!-- Nav Item - Utilities Collapse Menu -->
-          <li class="nav-item <?php echo $this->uri->segment(1) == 'product' ? 'active': '' ?>">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-              <i class="fas fa-fw fa-cubes"></i>
-              <span>Production</span>
+            <!-- Menu halaman admin produksi -->
+
+            <li class="nav-item 
+            <?php echo $this->uri->segment(1) == 'planning' ? 'active': '' ?>
+            <?php echo $this->uri->segment(1) == 'product' ? 'active': '' ?>
+            <?php echo $this->uri->segment(1) == 'users' ? 'active': '' ?>
+            ">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#masterdata" aria-expanded="true" aria-controls="masterdata">
+              <i class="fas fa-server"></i>
+              <span>Master Data</span>
             </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div id="masterdata" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="<?php echo site_url('product') ?>"><i class="fas fa-list"></i>  Browse</a>
-                <a class="collapse-item" href="<?php echo site_url('product/create') ?>"><i class="fas fa-plus"></i>  Create</a>
-              </div>
-            </div>
-          </li> 
-          <!-- Nav Item - Pages Collapse Menu -->
-          <li class="nav-item <?php echo $this->uri->segment(1) == 'users' ? 'active': '' ?>">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseT" aria-expanded="true" aria-controls="collapseT">
-              <i class="fas fa-fw fa-users"></i>
-              <span>Users</span>
-            </a>
-            <div id="collapseT" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="<?php echo site_url('users') ?>"><i class="fas fa-list"></i>  Browse</a>
-                <a class="collapse-item" href="<?php echo site_url('users/create') ?>"><i class="fas fa-plus"></i> Create</a>
+                <a class="collapse-item <?php echo $this->uri->segment(1) == 'planning' ? 'active': '' ?>" href="<?php echo site_url('planning') ?>"><i class="fas fa-crosshairs"></i>  Data Planning</a>
+                <a class="collapse-item <?php echo $this->uri->segment(1) == 'product' ? 'active': '' ?>" href="<?php echo site_url('product') ?>"><i class="fas fa-fw fa-cubes"></i> Data Produk</a>
+                <a class="collapse-item <?php echo $this->uri->segment(1) == 'users' ? 'active': '' ?>" href="<?php echo site_url('users') ?>"><i class="fas fa-fw fa-users"></i>  Data User</a>
               </div>
             </div>
           </li>
           <!-- Nav Item - Pages Collapse Menu -->
-          <li class="nav-item <?php echo $this->uri->segment(2) == 'karyawan' ? 'active': '' ?>">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport" aria-expanded="true" aria-controls="collapseReport">
-              <i class="fas fa-fw fa-file"></i>
+          <li class="nav-item <?php echo $this->uri->segment(2) == 'schedule' ? 'active': '' ?>">
+            <a class="nav-link" href="<?=base_url('schedule'); ?>">
+              <i class="far fa-calendar-alt"></i>
+              <span>Schedule</span>
+            </a>
+          </li>
+          <!-- Nav Item - Pages Collapse Menu -->
+          <li class="nav-item <?php echo $this->uri->segment(2) == 'report' ? 'active': '' ?>">
+            <a class="nav-link" href="<?=base_url('report'); ?>">
+              <i class="far fa-file"></i>
               <span>Report</span>
             </a>
-            <div id="collapseReport" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="<?php echo site_url('admin/karyawan') ?>"><i class="fas fa-list"></i>  Daily</a>
-                <a class="collapse-item" href="<?php echo site_url('admin/karyawan/add') ?>"><i class="fas fa-plus"></i> Monthly</a>
-              </div>
-            </div>
           </li>
         <?php } ?>
 
@@ -458,7 +453,7 @@
           </div>
         </div>
 
-        
+
 
 
         <script type="text/javascript">

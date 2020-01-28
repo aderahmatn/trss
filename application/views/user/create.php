@@ -1,9 +1,14 @@
 <div class="row">
 				<div class="col-lg-12 mb-4">
 					<div class="card shadow mb-">
-						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">Create User </h6>
-						</div>
+						<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+				<h6 class="m-0 font-weight-bold text-primary">Tambah Data User</h6>
+				<div class="button">
+					<a class="btn btn-light text-primary btn-sm" type="button" href="<?=base_url('users') ?>"><i class="fas fa-arrow-circle-left"></i>
+						Back
+					</a>
+				</div>
+			</div>
 						<div class="card-body">
 							<form action="" method="post">
 								<div class="form-row">

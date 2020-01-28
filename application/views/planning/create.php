@@ -3,9 +3,14 @@
 		<!-- Collapsable Card -->
 		<div class="card shadow mb-4">
 			<!-- Card Header - Accordion -->
-			<a href="#createProduct" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="createProduct">
-				<h6 class="m-0 font-weight-bold text-primary">Create Planning</h6>
-			</a>
+			<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+				<h6 class="m-0 font-weight-bold text-primary">Tambah Data Planning</h6>
+				<div class="button">
+					<a class="btn btn-light text-primary btn-sm" type="button" href="<?=base_url('planning') ?>"><i class="fas fa-arrow-circle-left"></i>
+						Back
+					</a>
+				</div>
+			</div>
 			<!-- Card Content - Collapse -->
 			<div class="collapse show" id="createProduct">
 				<div class="card-body">
@@ -27,7 +32,7 @@
 								<select class="form-control form-control-sm <?php echo form_error('position')?'is-invalid':''?>" name="position" id="position" aria-describedby="processhelp">
 									<option selected hidden value="">Pilih Position..</option>
 									<?php foreach ($position as $proc) :?>
-									<option value="<?=$proc->IdPosition?>" <?=set_value('position') == "$proc->IdPosition" ? "selected" : ''?>><?=ucfirst($proc->PositionName);?></option>
+										<option value="<?=$proc->IdPosition?>" <?=set_value('position') == "$proc->IdPosition" ? "selected" : ''?>><?=ucfirst($proc->PositionName);?></option>
 									<?php endforeach ?>
 								</select>
 								<div class="invalid-feedback">
@@ -57,7 +62,7 @@
 								<select class="form-control form-control-sm <?php echo form_error('lineproduct')?'is-invalid':''?>" name="lineproduct" id="lineproduct" aria-describedby="processhelp">
 									<option selected hidden value="">Pilih Line..</option>
 									<?php foreach ($line as $proc) :?>
-									<option value="<?=$proc->IdLine?>" <?=set_value('lineproduct') == "$proc->IdLine" ? "selected" : ''?>><?=ucfirst($proc->LineName);?></option>
+										<option value="<?=$proc->IdLine?>" <?=set_value('lineproduct') == "$proc->IdLine" ? "selected" : ''?>><?=ucfirst($proc->LineName);?></option>
 									<?php endforeach ?>
 								</select>
 								<div class="invalid-feedback">
@@ -94,21 +99,21 @@
 							</div>
 						</div>
 						<div class="card-footer text-right">
-							<button type="submit" class="btn btn-primary btn-sm shadow-sm" id="btnSave"><i class="fas fa-save fa-sm"></i> save</button>
-									<button type="reset" class="btn btn-primary btn-sm shadow-sm"><i class="fas fa-window-close fa-sm"></i> reset</button>
+							<button type="submit" class="btn btn-primary btn-sm shadow-sm" id="btnSave"><i class="fas fa-save fa-sm"></i> Save</button>
+							
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
-</div>
+	</div>
 
 	<div class="col-3">
 		<!-- Default Card Example -->
 		<div class="card mb-4">
 			<div class="card-header">
-				<small>
-				Petunjuk</small>
+				<small><i class="fas fa-info-circle"></i> <b>
+				Petunjuk</b></small>
 			</div>
 			<div class="card-body">
 				<small>
@@ -120,71 +125,65 @@
 	</div>
 </div>
 <!-- dropdown-chaining-process-->
-        <script type="text/javascript">
-          $(document).ready(function(){
-              $('#btnSave').attr("disabled", true);
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.processing').hide();
+		$('.line').hide();
+		$('.product').hide();
+		$('.qty').hide();
 
-            $('.processing').hide();
-            $('.line').hide();
-            $('.product').hide();
-            $('.qty').hide();
+		$('#position').change(function(){
 
-            $('#position').change(function(){
-
-              $('.processing').show();
-              $('.line').show();
+			$('.processing').show();
+			$('.line').show();
 
 
-              var id=$(this).val();
-              $.ajax({
-                url : "<?php echo base_url('planning/getProcess');?>",
-                method : "POST",
-                data : {id: id},
-                dataType : 'json',
-                success: function(data){
-                  var html = "";
-                  var i;
-                  for(i=0; i<data.length; i++){
-                    html += "<option value='"+data[i].IdProcess+"'>"+data[i].ProcessName+"</option>";
-                  }
-                  $('#processing').html(html);
-                }
-              });
-            });
-          });
-        </script>
+			var id=$(this).val();
+			$.ajax({
+				url : "<?php echo base_url('planning/getProcess');?>",
+				method : "POST",
+				data : {id: id},
+				dataType : 'json',
+				success: function(data){
+					var html = "";
+					var i;
+					for(i=0; i<data.length; i++){
+						html += "<option value='"+data[i].IdProcess+"'>"+data[i].ProcessName+"</option>";
+					}
+					$('#processing').html(html);
+				}
+			});
+		});
+	});
+</script>
 
-        <!-- dropdown-chaining-product-->
-        <script type="text/javascript">
-          $(document).ready(function(){
-            $('#lineproduct').change(function(){
+<!-- dropdown-chaining-product-->
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#lineproduct').change(function(){
 
-              $('.product').show();
-              $('.qty').show();
+			$('.product').show();
+			$('.qty').show();
 
-              var id=$(this).val();
-              var ps=$('#position').val();
+			var id=$(this).val();
+			var ps=$('#position').val();
 
-              $.ajax({
-                url : "<?php echo base_url('planning/getProduct');?>",
-                method : "POST",
-                data : {id: id, ps:ps},
-                dataType : 'json',
-                success: function(data){
-                  var html = '';
-                  var i;
-                  for(i=0; i<data.length; i++){
+			$.ajax({
+				url : "<?php echo base_url('planning/getProduct');?>",
+				method : "POST",
+				data : {id: id, ps:ps},
+				dataType : 'json',
+				success: function(data){
+					var html = '';
+					var i;
+					for(i=0; i<data.length; i++){
 
-                    html += "<option value='"+data[i].IdProduk+"'>"+data[i].PartName+" - "+data[i].PartNumber+"</option>";
-                  }
-                  $('#product').html(html);
-                }
-              });
-            });
-            $('#qty').click(function(){
-              $('#btnSave').attr("disabled", false);
+						html += "<option value='"+data[i].IdProduk+"'>"+data[i].PartName+" - "+data[i].PartNumber+"</option>";
+					}
+					$('#product').html(html);
+				}
+			});
+		});
+	});
 
-            });
-          });
-
-        </script>
+</script>

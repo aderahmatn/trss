@@ -30,7 +30,7 @@ class Calendar_m extends CI_Model {
 		{cal_cell_start_other}<td class="other-month">{/cal_cell_start_other}
 		{cal_cell_content}
 		<div class="day_num">{day}</div>
-		<div class="content"><a href="#">{content}</a></div>
+		<div class="content"><a href="schedule/detail/{content}">{content}</a></div>
 		{/cal_cell_content}
 		{cal_cell_content_today}
 		<div class="">
@@ -53,18 +53,19 @@ class Calendar_m extends CI_Model {
 	public function getcalendar($year , $month)
 	{
 		$this->load->library('calendar',$this->prefs);
-		
+		$year = date('Y');
+		$month = date('m');
 		$data = $this->get_calender_data($year,$month);
 		return $this->calendar->generate($year , $month , $data);
 	}
 
 	public function get_calender_data($year , $month)
 	{
-		$query =  $this->db->select('Date,Qty, IdPlan')->from('tplan')->like('date',"$year-$month",'after')->get();
+		$query =  $this->db->select('Date,IdSchedule')->from('tschedule')->like('date',"$year-$month",'after')->get();
 		$cal_data = array();
 		foreach ($query->result() as $row) {
             $calendar_date = date("Y-m-j", strtotime($row->Date)); 
-            $cal_data[substr($calendar_date, 8,2)] = $row->IdPlan;
+            $cal_data[substr($calendar_date, 8,2)] = $row->IdSchedule;
         }
         return $cal_data;
     }

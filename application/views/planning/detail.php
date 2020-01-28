@@ -1,14 +1,14 @@
 <table class="table table-bordered col-12">
   <tbody>
     <tr>
-      <th scope="row">Tanggal</th>
-      <td>:</td>
-      <td><?=$planning->Date ?></td>
-    </tr>
-    <tr>
       <th scope="row">Position</th>
       <td>:</td>
-      <td><?=strtoupper($planning->PositionName) ?></td>
+      <td><?=strtoupper($planning->PositionName)?></td>
+    </tr>
+    <tr>
+      <th scope="row">Line</th>
+      <td>:</td>
+      <td><?=strtoupper($planning->LineName)?></td>
     </tr>
     <tr>
       <th scope="row">IDPart</th>
@@ -16,9 +16,9 @@
       <td><?=$planning->PartName ?></td>
     </tr>
     <tr>
-      <th scope="row">Line</th>
+      <th scope="row">Process</th>
       <td>:</td>
-      <td><?=strtoupper($planning->LineName)?></td>
+      <td><?=strtoupper($planning->ProcessName)?></td>
     </tr>
     <tr>
       <th scope="row">Quantity</th>

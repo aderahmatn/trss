@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Calendar extends CI_Controller {
 
-	public function schedule($year=NULL, $month=NULL)
+	public function index($year=NULL, $month=NULL)
 	{
 		
 		$this->load->model('calendar_m');

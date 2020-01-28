@@ -3,9 +3,14 @@
 		<!-- Collapsable Card -->
 		<div class="card shadow mb-4">
 			<!-- Card Header - Accordion -->
-			<a href="#before" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="before">
-				<h6 class="m-0 font-weight-bold text-primary">Master Product</h6>
-			</a>
+			<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+				<h6 class="m-0 font-weight-bold text-primary">Data Produk</h6>
+				<div class="button">
+					<a class="btn btn-primary btn-sm" type="button" href="<?=base_url('product/create') ?>"><i class="fas fa-plus"></i>
+						New Produk, Process, Line
+					</a>
+				</div>
+			</div>
 			<!-- Card Content - Collapse -->
 			<div class="collapse show" id="before">
 				<div class="card-body">
