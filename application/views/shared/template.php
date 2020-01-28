@@ -21,9 +21,7 @@
   <link href="<?php echo base_url('assets/datatables/dataTables.bootstrap4.min.css') ?>" rel="stylesheet">
   <link href="<?php echo base_url('assets/toastr/toastr.min.css') ?>" rel="stylesheet">
   <script src="<?php echo base_url('assets/jquery/jquery.min.js') ?>"></script>
-  <!-- fullcalendar -->
-  <link href="<?php echo base_url('assets/fullcalendar/main.min.css') ?>" rel="stylesheet">
-  <script src="<?php echo base_url('assets/fullcalendar/main.min.js') ?>"></script>
+  
 
 
 
@@ -74,7 +72,7 @@
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="<?php echo site_url('admin/karyawan') ?>"><i class="fas fa-list"></i>  Browse</a>
+                <a class="collapse-item" href="<?php echo site_url('calendar') ?>"><i class="fas fa-list"></i>  Browse</a>
                 <a class="collapse-item" href="<?php echo site_url('admin/karyawan/add') ?>"><i class="fas fa-plus"></i> Create</a>
               </div>
             </div>
