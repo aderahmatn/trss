@@ -5,6 +5,8 @@ class Schedule extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		check_not_login();
+		check_role();
 		$this->load->model('schedule_m');
 		$this->load->model('planning_m');
 	}
