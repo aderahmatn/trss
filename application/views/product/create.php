@@ -4,7 +4,7 @@
 		<div class="card shadow mb-4">
 			<!-- Card Header - Accordion -->
 			<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-				<h6 class="m-0 font-weight-bold text-primary">Create Planning</h6>
+				<h6 class="m-0 font-weight-bold text-primary">Create Product</h6>
 				<div class="button">
 					<a class="btn btn-light text-primary btn-sm" type="button" href="<?=base_url('product') ?>"><i class="fas fa-arrow-circle-left"></i>
 						Back

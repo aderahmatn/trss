@@ -15,17 +15,8 @@
 			<div class="collapse show" id="createProduct">
 				<div class="card-body">
 					<form action="" method="post">
-						<div class="form-group row">
-							<label for="dateplann" class="col-sm-3 col-form-label-sm">Planning Date</label>
-							<div class="col-sm-6">
 								<input type="hidden" name="id" id="id" value="<?=uniqid()?>" >
 
-								<input type="date" class="form-control form-control-sm <?php echo form_error('dateplann')?'is-invalid':''?>" name="dateplann" id="dateplann" autocomplete="off" aria-describedby="dateplannhelp" value="<?=set_value('dateplann')?>">
-								<div class="invalid-feedback">
-									<?php echo form_error('dateplann'); ?>
-								</div>
-							</div>
-						</div>
 						<div class="form-group row">
 							<label for="position" class="col-sm-3 col-form-label-sm">Position</label>
 							<div class="col-sm-6">

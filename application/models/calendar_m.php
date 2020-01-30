@@ -10,8 +10,7 @@ class Calendar_m extends CI_Model {
 			'start_day'    => 'monday',
 			'month_type'   => 'long',
 			'day_type'     => 'short',
-			'show_next_prev' => TRUE,
-			'next_prev_url'   => base_url('calendar/next')
+			'show_next_prev' => FALSE,
 		);
 		$this->prefs['template'] = '
 		{table_open}
@@ -35,7 +34,7 @@ class Calendar_m extends CI_Model {
 		{cal_cell_content_today}
 		<div class="">
 		<div class="day_num highlight">{day}</div>
-		<div class="content"><a href="{content}">{content}</a></div>
+		<div class="content"><a href="schedule/detail/{content}">{content}</a></div>
 		</div>
 		{/cal_cell_content_today}
 		{cal_cell_no_content}{day}{/cal_cell_no_content}

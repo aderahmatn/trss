@@ -113,10 +113,10 @@
             </div>
           </li>
           <!-- Nav Item - Pages Collapse Menu -->
-          <li class="nav-item <?php echo $this->uri->segment(2) == 'schedule' ? 'active': '' ?>">
+          <li class="nav-item <?php echo $this->uri->segment(1) == 'schedule' ? 'active': '' ?>">
             <a class="nav-link" href="<?=base_url('schedule'); ?>">
               <i class="far fa-calendar-alt"></i>
-              <span>Schedule</span>
+              <span>Jadwal Produksi</span>
             </a>
           </li>
           <!-- Nav Item - Pages Collapse Menu -->

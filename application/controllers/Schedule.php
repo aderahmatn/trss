@@ -9,9 +9,20 @@ class Schedule extends CI_Controller {
 		check_role();
 		$this->load->model('schedule_m');
 		$this->load->model('planning_m');
+		$this->load->model('calendar_m');
 	}
 
-	public function index()
+	public function index($year=NULL, $month=NULL)
+	{
+		
+		$this->load->model('calendar_m');
+		$data['calendar'] = $this->calendar_m->getcalendar($year , $month);
+		$this->template->load('shared/template', 'schedule/browse', $data);	
+		// redirect('calendar/next','refresh');
+
+	}
+
+	public function create()
 	{
 
 		$this->form_validation->set_message('required','%s tidak boleh kosong!');
@@ -42,6 +53,33 @@ class Schedule extends CI_Controller {
 			}
 		}		
 	}
+
+	public function detail($id = null)
+	{
+		if (!isset($id)) redirect('product');
+		
+		$schedule = $this->schedule_m;
+
+		$data['schedule'] = $schedule->GetById($id);
+		
+
+		if (!$data['schedule']) {
+			$this->session->set_flashdata('error', 'Data tidak ditemukan!');
+			redirect('schedule','refresh');
+		}
+		$this->template->load('shared/template', 'schedule/detail', $data);
+	}
+
+	public function delete($id)
+	{
+
+		$this->schedule_m->delete($id);
+		if ($this->db->affected_rows() > 0) {
+			$this->session->set_flashdata('success', 'Schedule berhasil dihapus!');
+			redirect('schedule','refresh');
+		}
+	}
+
 
 }
 

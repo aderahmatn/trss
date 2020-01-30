@@ -6,9 +6,8 @@ class Planning_m extends CI_Model {
 	private $_table = "tplan";
 
 	public $IdPlan;
-	public $Date;
 	public $IdProcess;
-	public $IdPart;
+	public $IdProduk;
 	public $Qty;
 	public $CreateDate;
 
@@ -16,10 +15,7 @@ class Planning_m extends CI_Model {
 	public function rules()
 	{
 		return[
-			['field' => 'dateplann',
-			'label' => 'Tanggal Planning',
-			'rules' => 'required'],
-
+			
 			['field' => 'position',
 			'label' => 'Position',
 			'rules' => 'required'],
@@ -47,7 +43,7 @@ class Planning_m extends CI_Model {
 		$this->db->from('tplan');
 
 		$this->db->join('tprocess','tprocess.IdProcess=tplan.IdProcess', 'left');
-		$this->db->join('tproduk','tproduk.IdProduk=tplan.IdPart', 'left');
+		$this->db->join('tproduk','tproduk.IdProduk=tplan.IdProduk', 'left');
 		$this->db->join('tposition','tposition.IdPosition=tproduk.IdPosition', 'left');
 		$this->db->join('tline','tline.Idline=tproduk.IdLine', 'left');
 
@@ -60,7 +56,7 @@ class Planning_m extends CI_Model {
 		$this->db->from('tplan');
 		$this->db->where('IdPlan', $id);
 		$this->db->join('tprocess','tprocess.IdProcess=tplan.IdProcess', 'left');
-		$this->db->join('tproduk','tproduk.IdProduk=tplan.IdPart', 'left');
+		$this->db->join('tproduk','tproduk.IdProduk=tplan.IdProduk', 'left');
 		$this->db->join('tline','tline.Idline=tproduk.IdLine', 'left');
 		$this->db->join('tposition','tposition.IdPosition=tproduk.IdPosition', 'left');
 		$query = $this->db->get();
@@ -71,9 +67,8 @@ class Planning_m extends CI_Model {
 	{
 		$post = $this->input->post();
 		$this->IdPlan = $post['id'];
-		$this->Date = $post['dateplann'];
 		$this->IdProcess = $post['processing'];
-		$this->IdPart = $post['product'];
+		$this->IdProduk = $post['product'];
 		$this->Qty = $post['qty'];
 		$this->CreateDate = $post['datecreate'];
 		$this->db->insert($this->_table, $this);
@@ -83,11 +78,10 @@ class Planning_m extends CI_Model {
 	{
 		$post = $this->input->post();
 		$this->IdPlan = $post['id'];
-		$this->Date = $post['dateplann'];
 		$this->IdPosition = $post['position'];
 		$this->IdLine = $post['lineproduct'];
 		$this->IdProcess = $post['processing'];
-		$this->IdPart = $post['product'];
+		$this->IdProduk = $post['product'];
 		$this->Qty = $post['qty'];
 		$this->CreateDate = $post['datecreate'];
 		$this->db->update($this->_table, $this, array('IdPlan' => $post['id']));
