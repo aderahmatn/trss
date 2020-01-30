@@ -12,6 +12,15 @@ class Transaksi_m extends CI_Model {
 	public $ActualQty;
 	public $Note;
 
+	public function rules()
+	{
+		return[
+			
+			['field' => 'actualqty',
+			'label' => 'Quantity',
+			'rules' => 'required|numeric']
+		];
+	}
 	public function add()
 	{
 		$post = $this->input->post();

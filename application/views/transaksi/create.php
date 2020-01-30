@@ -14,7 +14,7 @@
 			<!-- Card Content - Collapse -->
 			<div class="collapse show" id="createProduct">
 				<div class="card-body">
-					<form action="<?=base_url('transaksi/save') ?>" method="post">
+					<form action="" method="post">
 						<input type="hidden" name="idtransaksi" id="idtransaksi" value="<?=uniqid('trss')?>" >
 
 						<input type="hidden" name="iduser" id="iduser" value="<?= ucfirst($this->session->userdata('nik'));?>" >
@@ -27,13 +27,10 @@
 							<label for="actualqty" class="col-sm-2 col-form-label-sm">NO Planning</label>
 							<div class="col-sm-6">
 
-								<input type="text" class="form-control form-control-sm <?php echo form_error('actualqty')?'is-invalid':''?>" name="actualqty" id="actualqty" autocomplete="off" aria-describedby="actualqtyhelp" value="<?=$planning->IdPlan?>" disabled>
+								<input type="text" class="form-control form-control-sm" name="hide" id="hide" autocomplete="off" aria-describedby="actualqtyhelp" value="<?=$planning->IdPlan?>" disabled>
 
 								<a href='#detailPlanning' class='form-control form-control-sm btn btn-sm btn-info' id='custId' data-toggle='modal' data-id="<?=$planning->IdPlan?>"><i class="fa fa-eye"></i> Lihat Detail</a>
-								<div class="invalid-feedback">
-
-									<?php echo form_error('actualqty'); ?>
-								</div>
+							
 							</div>
 							<div class="col-sm-4">
 								<small id="actualqtyhelp" class="form-text text-muted">Quantity hasil produksi</small>
@@ -44,8 +41,8 @@
 							<label for="actualqty" class="col-sm-2 col-form-label-sm">Actual Qty</label>
 							<div class="col-sm-6">
 
-								<input type="text" class="form-control form-control-sm <?php echo form_error('actualqty')?'is-invalid':''?>" name="actualqty" id="actualqty" autocomplete="off" aria-describedby="actualqtyhelp" value="<?=set_value('actualqty')?>">
-								<div class="invalid-feedback">
+								<input type="text" class="form-control form-control-sm <?php echo form_error('actualqty')?'is-invalid':''?>" name="actualqty" id="actualqty" autocomplete="off" aria-describedby="actualqtyhelp" value="<?=set_value('actualqty')?>" >
+								<div class="invalid-feedback" >
 									<?php echo form_error('actualqty'); ?>
 								</div>
 							</div>
@@ -67,7 +64,7 @@
 						</div>
 						<div class="card-footer text-right">
 							<button type="submit" class="btn btn-primary btn-sm shadow-sm"><i class="fas fa-save fa-sm"></i> save</button>
-							<button type="reset" class="btn btn-primary btn-sm shadow-sm"><i class="fas fa-window-close fa-sm"></i> reset</button>
+							
 						</div>
 					</form>
 				</div>
