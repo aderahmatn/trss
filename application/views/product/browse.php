@@ -61,7 +61,7 @@
 							<thead hidden>
 								<tr>
 									<th>Process</th>
-									<th>Position</th>
+									<th>Line</th>
 									<th>X</th>
 								</tr>
 							</thead>
@@ -71,7 +71,7 @@
 								foreach ($process as $dt): ?>
 									<tr>
 										<td><?php echo $dt->ProcessName ?></td>
-										<td><?php echo $dt->PositionName ?></td>
+										<td><?php echo strtoupper($dt->LineName) ?></td>
 										<td><a onclick="deleteConfirm('<?=site_url('process/delete/'.$dt->IdProcess)?>')" href="#!" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
 										</td>
 									</tr>

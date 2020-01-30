@@ -7,7 +7,7 @@ class Process_m extends CI_Model {
 	private $_tableline = "tline";
 
 	public $ProcessName;
-	public $IdPosition;
+	public $IdLine;
 
 	public function rules()
 	{
@@ -43,7 +43,7 @@ class Process_m extends CI_Model {
 	{
 		$post = $this->input->post();
 		$this->ProcessName = $post['processname'];
-		$this->IdPosition = $post['positionpro'];
+		$this->IdLine = $post['positionpro'];
 		$this->db->insert($this->_table, $this);
 	}
 

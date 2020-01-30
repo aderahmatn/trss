@@ -65,17 +65,11 @@
           </div>
 
           <!-- Nav Item - Pages Collapse Menu -->
-          <li class="nav-item <?php echo $this->uri->segment(1) == 'report' ? 'active': '' ?>">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-              <i class="fas fa-file"></i>
-              <span>Report</span>
+          <li class="nav-item <?php echo $this->uri->segment(1) == 'schedule' ? 'active': '' ?>">
+            <a class="nav-link" href="<?=base_url('schedule'); ?>">
+              <i class="far fa fa-cubes"></i>
+              <span>Production</span>
             </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-              <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="<?php echo site_url('calendar') ?>"><i class="fas fa-list"></i>  Browse</a>
-                <a class="collapse-item" href="<?php echo site_url('admin/karyawan/add') ?>"><i class="fas fa-plus"></i> Create</a>
-              </div>
-            </div>
           </li>
         <?php } ?>
         <?php if ($this->session->userdata('role') == 1) { ?>   
@@ -128,28 +122,7 @@
           </li>
         <?php } ?>
 
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-          Setting
-        </div>
-
-
-        <!-- Nav Item - Charts -->
-        <li class="nav-item">
-          <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Setting</span></a>
-          </li>
-
-          <!-- Nav Item - Tables -->
-          <li class="nav-item">
-            <a class="nav-link" href="tables.html">
-              <i class="fas fa-fw fa-code"></i>
-              <span>About</span></a>
-            </li>
+        
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

@@ -34,19 +34,6 @@
 								<small id="positionhelp" class="form-text text-muted"></small>
 							</div>
 						</div>
-						
-						<div class="form-group row processing">
-							<label for="processing" id="lblprocessing" class="col-sm-3 col-form-label-sm">Proccesing</label>
-							<div class="col-sm-6">
-								<select class="form-control form-control-sm <?php echo form_error('processing')?'is-invalid':''?>" name="processing" id="processing" aria-describedby="processhelp" >
-									<option selected hidden value="" >Pilih Process..</option>
-								</select>
-								<div class="invalid-feedback">
-									<?php echo form_error('processing'); ?>
-								</div>
-							</div>
-						</div>
-						
 						<div class="form-group row line">
 							<label for="lineproduct" id="lbllineproduct" class="col-sm-3 col-form-label-sm">Line</label>
 							<div class="col-sm-6">
@@ -64,6 +51,19 @@
 								<small id="lineproducthelp" class="form-text text-muted"></small>
 							</div>
 						</div>
+						<div class="form-group row processing">
+							<label for="processing" id="lblprocessing" class="col-sm-3 col-form-label-sm">Proccesing</label>
+							<div class="col-sm-6">
+								<select class="form-control form-control-sm <?php echo form_error('processing')?'is-invalid':''?>" name="processing" id="processing" aria-describedby="processhelp" >
+									<option selected hidden value="" >Pilih Process..</option>
+								</select>
+								<div class="invalid-feedback">
+									<?php echo form_error('processing'); ?>
+								</div>
+							</div>
+						</div>
+						
+						
 						<div class="form-group row product">
 							<label for="product" id="lblproduct" class="col-sm-3 col-form-label-sm">Product</label>
 							<div class="col-sm-6">
@@ -115,25 +115,17 @@
 		</div>
 	</div>
 </div>
+
 <!-- dropdown-chaining-process-->
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('.processing').hide();
-		$('.line').hide();
-		$('.product').hide();
-		$('.qty').hide();
-
-		$('#position').change(function(){
-
-			$('.processing').show();
-			$('.line').show();
-
-
+		$('#lineproduct').change(function(){
 			var id=$(this).val();
+			var ps=$('#position').val();
 			$.ajax({
 				url : "<?php echo base_url('planning/getProcess');?>",
 				method : "POST",
-				data : {id: id},
+				data : {id: id, ps:ps},
 				dataType : 'json',
 				success: function(data){
 					var html = "";

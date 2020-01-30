@@ -11,23 +11,13 @@
 				<div class="card-body">
 					<form action="" method="post">
 						<div class="form-group row">
-							<label for="dateplann" class="col-sm-3 col-form-label-sm">Planning Date</label>
-							<div class="col-sm-6">
-								<input type="hidden" name="id" id="id" value="<?=uniqid()?>" >
-
-								<input type="date" class="form-control form-control-sm <?php echo form_error('dateplann')?'is-invalid':''?>" name="dateplann" id="dateplann" autocomplete="off" aria-describedby="dateplannhelp" value="<?=set_value('dateplann')?>">
-								<div class="invalid-feedback">
-									<?php echo form_error('dateplann'); ?>
-								</div>
-							</div>
-						</div>
-						<div class="form-group row">
 							<label for="position" class="col-sm-3 col-form-label-sm">Position</label>
 							<div class="col-sm-6">
 								<select class="form-control form-control-sm <?php echo form_error('position')?'is-invalid':''?>" name="position" id="position" aria-describedby="processhelp">
 									<option selected hidden value="">Pilih Position..</option>
+									<?php $positionx = $this->input->post('position')?$this->input->post('position'):$position->IdPosition ?>
 									<?php foreach ($position as $proc) :?>
-									<option value="<?=$proc->IdPosition?>" <?=set_value('position') == "$proc->IdPosition" ? "selected" : ''?>><?=ucfirst($proc->PositionName);?></option>
+									<option value="<?=$proc->IdPosition?>" <?=$positionx == "$proc->IdPosition" ? "selected" : ''?>><?=ucfirst($proc->PositionName);?></option>
 									<?php endforeach ?>
 								</select>
 								<div class="invalid-feedback">
@@ -122,17 +112,11 @@
 <!-- dropdown-chaining-process-->
         <script type="text/javascript">
           $(document).ready(function(){
-              $('#btnSave').attr("disabled", true);
-
-            $('.processing').hide();
-            $('.line').hide();
-            $('.product').hide();
-            $('.qty').hide();
+              
 
             $('#position').change(function(){
 
-              $('.processing').show();
-              $('.line').show();
+              
 
 
               var id=$(this).val();
@@ -159,8 +143,7 @@
           $(document).ready(function(){
             $('#lineproduct').change(function(){
 
-              $('.product').show();
-              $('.qty').show();
+              
 
               var id=$(this).val();
               var ps=$('#position').val();

@@ -109,12 +109,12 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="positionpro" class="col-sm-2 col-form-label-sm">Position</label>
+							<label for="positionpro" class="col-sm-2 col-form-label-sm">Line</label>
 							<div class="col-sm-6">
 								<select class="form-control form-control-sm <?php echo form_error('positionpro')?'is-invalid':''?>" name="positionpro" id="positionpro" aria-describedby="positionprohelp">
-									<option selected hidden value="">Pilih Position..</option>
-									<?php foreach ($position as $ps) :?>
-									<option value="<?=$ps->IdPosition?>" <?=set_value('positionpro') == "$ps->IdPosition" ? "selected" : ''?>><?= ucfirst($ps->PositionName)?></option>
+									<option selected hidden value="">Pilih Line..</option>
+									<?php foreach ($line as $ps) :?>
+									<option value="<?=$ps->IdLine?>" <?=set_value('positionpro') == "$ps->IdLine" ? "selected" : ''?>><?= ucfirst($ps->LineName)?></option>
 									<?php endforeach ?>
 									
 								</select>

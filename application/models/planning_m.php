@@ -51,6 +51,11 @@ class Planning_m extends CI_Model {
 		return $query->result();
 	}
 
+	public function GetByIdOnly($id)
+	{
+		return $this->db->get_where($this->_table,["IdPlan" => $id])->row();
+	}
+
 	public function GetById($id)
 	{
 		$this->db->from('tplan');
@@ -92,9 +97,9 @@ class Planning_m extends CI_Model {
 		return $this->db->delete($this->_table, array('IdPlan' => $id));
 	}
 
-	public function getProcessByPosition($id)
+	public function getProcessByPosition($id, $ps)
 	{
-		$hasil=$this->db->query("SELECT * FROM tprocess WHERE IdPosition='$id' ");
+		$hasil=$this->db->query("SELECT * FROM tprocess WHERE IdPosition='$ps' AND IdLine='$id'");
 		return $hasil->result();
 	}
 

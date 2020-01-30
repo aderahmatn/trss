@@ -25,6 +25,7 @@ class Product_m extends CI_Model {
 			['field' => 'position',
 			'label' => 'Position',
 			'rules' => 'required'],
+			
 			['field' => 'lineproduct',
 			'label' => 'Line',
 			'rules' => 'required']
@@ -49,7 +50,7 @@ class Product_m extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('tprocess');
-		$this->db->join('tposition','tprocess.IdPosition=tposition.IdPosition', 'left');
+		$this->db->join('tline','tprocess.IdLine=tline.IdLine', 'left');
 		$query = $this->db->get();
 		return $query->result();
 	}

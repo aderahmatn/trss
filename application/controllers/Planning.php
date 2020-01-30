@@ -6,7 +6,7 @@ class Planning extends CI_Controller {
 	{
 		parent::__construct();
 		check_not_login();
-		check_role();
+		
 		$this->load->model('planning_m');
 		$this->load->model('product_m');
 		$this->load->model('process_m');
@@ -15,12 +15,14 @@ class Planning extends CI_Controller {
 
 	public function index()
 	{
+		check_role();
 		$data['plan'] = $this->planning_m->GetAll();
 		$this->template->load('shared/template', 'planning/browse', $data);	
 	}
 
 	public function create()
 	{
+		check_role();
 		$this->form_validation->set_message('required','%s tidak boleh kosong!');
 		$this->form_validation->set_message('numeric','%s harus berupa angka!');
 		$planning = $this->planning_m;
@@ -48,6 +50,7 @@ class Planning extends CI_Controller {
 
 	public function update($id = null)
 	{
+		check_role();
 		if (!isset($id)) redirect('planning');
 		
 		$this->form_validation->set_message('required','%s tidak boleh kosong!');
@@ -82,7 +85,8 @@ class Planning extends CI_Controller {
 	public function getProcess()
 	{
 		$id=$this->input->post('id');
-		$data=$this->planning_m->getProcessByPosition($id);
+		$ps=$this->input->post('ps');
+		$data=$this->planning_m->getProcessByPosition($id,$ps);
 		echo json_encode($data);
 	}
 
@@ -108,6 +112,7 @@ class Planning extends CI_Controller {
 	}
 	public function delete($id)
 	{
+		check_role();
 
 		$this->planning_m->delete($id);
 		if ($this->db->affected_rows() > 0) {

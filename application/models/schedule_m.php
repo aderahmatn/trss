@@ -31,8 +31,15 @@ class Schedule_m extends CI_Model {
 	{
 		$this->db->from('tschedule');
 		$this->db->where('IdSchedule', $id);
+		$this->db->join('tplan', 'tplan.Idplan = tschedule.Idplan');
 		$query = $this->db->get();
 		return $query->result();
+	}
+
+	public function GetByIdOnly($idsc)
+	{
+		return $this->db->get_where($this->_table,["IdSchedule" => $idsc])->row();
+
 	}
 
 	public function delete($id)

@@ -4,11 +4,14 @@
 		<div class="card shadow mb-4">
 			<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 				<h6 class="m-0 font-weight-bold text-primary">Schedule</h6>
+        <?php if ($this->session->userdata('role') == 1) { ?>   
+
 				<div class="button">
 					<a class="btn btn-primary btn-sm" type="button" href="<?=base_url('schedule/create') ?>"><i class="fas fa-plus"></i>
 						New Schedule
 					</a>
 				</div>
+			<?php } ?>
 			</div>
 			<div class="card-body">
 				<?php echo $calendar ?>

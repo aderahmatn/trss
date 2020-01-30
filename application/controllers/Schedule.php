@@ -5,8 +5,7 @@ class Schedule extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		check_not_login();
-		check_role();
+		
 		$this->load->model('schedule_m');
 		$this->load->model('planning_m');
 		$this->load->model('calendar_m');
@@ -24,7 +23,7 @@ class Schedule extends CI_Controller {
 
 	public function create()
 	{
-
+		check_role();
 		$this->form_validation->set_message('required','%s tidak boleh kosong!');
 		$schedule = $this->schedule_m;
 		$validation = $this->form_validation;
