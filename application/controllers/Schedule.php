@@ -23,7 +23,7 @@ class Schedule extends CI_Controller {
 
 	public function create()
 	{
-		check_role();
+		check_role_leader();
 		$this->form_validation->set_message('required','%s tidak boleh kosong!');
 		$schedule = $this->schedule_m;
 		$validation = $this->form_validation;

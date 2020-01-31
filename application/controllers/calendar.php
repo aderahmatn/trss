@@ -19,6 +19,7 @@ class Calendar extends CI_Controller {
 	}
 	public function next($year, $month)
 	{
+		
 		$this->load->model('calendar_m');
 		$data['calendar'] = $this->calendar_m->getcalendar($year , $month);
 		$this->template->load('shared/template', 'calendar/index', $data);	

@@ -11,6 +11,7 @@ class Calendar_m extends CI_Model {
 			'month_type'   => 'long',
 			'day_type'     => 'short',
 			'show_next_prev' => FALSE,
+			'next_prev_url' => base_url('calendar/next')
 		);
 		$this->prefs['template'] = '
 		{table_open}
