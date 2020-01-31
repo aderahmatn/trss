@@ -25,10 +25,5 @@
       <td>:</td>
       <td><?=$planning->Qty ?></td>
     </tr>
-    <tr>
-      <th scope="row">Stock</th>
-      <td>:</td>
-      <td><span class="badge badge-danger">145</span></td>
-    </tr>
   </tbody>
 </table>
