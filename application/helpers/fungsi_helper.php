@@ -25,3 +25,12 @@ function check_role(){
 		redirect('dashboard','refresh');
 	}	
 }
+
+function check_role_leader(){
+	$CI =& get_instance();
+	$user_session = $CI->session->userdata('role');
+	if ($user_session != '3') {
+		$CI->session->set_flashdata('error', 'Hak akses terbatas!');
+		redirect('dashboard','refresh');
+	}	
+}

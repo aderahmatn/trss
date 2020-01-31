@@ -20,6 +20,11 @@ class Report extends CI_Controller {
 		$data['schedule']=$this->report_m->getByRange($tgl1,$tgl2);
 		$this->template->load('shared/template', 'report/periodik_v',$data);	
 	}
+
+	public function exportPeriodik()
+	{
+		
+	}
 }
 
 /* End of file Report.php */

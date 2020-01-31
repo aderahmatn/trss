@@ -16,6 +16,7 @@ class Report_m extends CI_Model {
 		$this->db->join('tprocess', 'tprocess.IdProcess = tplan.IdProcess');
 		$this->db->join('tproduk', 'tproduk.IdProduk = tplan.IdProduk');
 		$this->db->join('tline', 'tline.IdLine = tproduk.IdLine');
+		$this->db->order_by('Date','ASC');
 		$query = $this->db->get();
 		return $query->result();
 	}

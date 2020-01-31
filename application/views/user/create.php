@@ -73,6 +73,7 @@
 										<select class="form-control form-control-sm <?php echo form_error('level')?'is-invalid':''?>" id="level" name="level" >
 
 											<option value = "" selected hidden>Pilih...</option>
+											<option value="3" <?=set_value('level') == "2" ? "selected" : ''?> >Leader</option>
 											<option value="1" <?=set_value('level') == "1" ? "selected" : ''?> >Admin</option>
 											<option value="2" <?=set_value('level') == "2" ? "selected" : ''?> >Operator</option>
 										</select>
