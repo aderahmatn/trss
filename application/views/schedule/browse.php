@@ -3,7 +3,7 @@
 	<div class="col-9">
 		<div class="card shadow mb-4">
 			<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-				<h6 class="m-0 font-weight-bold text-primary">Schedule</h6>
+				<h6 class="m-0 font-weight-bold text-primary">Jadwal Produksi</h6>
         <?php if ($this->session->userdata('role') == 3) { ?>   
 
 				<div class="button">

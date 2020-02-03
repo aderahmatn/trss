@@ -4,7 +4,7 @@
 		<div class="card shadow mb-4">
 			<!-- Card Header - Accordion -->
 			<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-				<h6 class="m-0 font-weight-bold text-primary">Create Product</h6>
+				<h6 class="m-0 font-weight-bold text-primary">Tambah Produk</h6>
 				<div class="button">
 					<a class="btn btn-light text-primary btn-sm" type="button" href="<?=base_url('product') ?>"><i class="fas fa-arrow-circle-left"></i>
 						Back
@@ -79,7 +79,7 @@
 						</div>
 						<div class="card-footer text-right">
 							<button type="submit" class="btn btn-primary btn-sm shadow-sm"><i class="fas fa-save fa-sm"></i> save</button>
-									<button type="reset" class="btn btn-primary btn-sm shadow-sm"><i class="fas fa-window-close fa-sm"></i> reset</button>
+								
 						</div>
 					</form>
 				</div>
@@ -89,7 +89,7 @@
 		<div class="card shadow mb-4">
 			<!-- Card Header - Accordion -->
 			<a href="#createProcess" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="createProcess">
-				<h6 class="m-0 font-weight-bold text-primary">Create Process</h6>
+				<h6 class="m-0 font-weight-bold text-primary">Tambah Process</h6>
 			</a>
 			<!-- Card Content - Collapse -->
 			<div class="collapse" id="createProcess">
@@ -138,7 +138,7 @@
 		<div class="card shadow mb-4">
 			<!-- Card Header - Accordion -->
 			<a href="#creatLine" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="creatLine">
-				<h6 class="m-0 font-weight-bold text-primary">Create Line</h6>
+				<h6 class="m-0 font-weight-bold text-primary">Tambah Line</h6>
 			</a>
 			<!-- Card Content - Collapse -->
 			<div class="collapse" id="creatLine">
@@ -176,9 +176,9 @@
 			</div>
 			<div class="card-body">
 				<small>
-				<strong>Create Produk </strong> untuk menambahkan produk baru dengan number part yang belum pernah di inputkan. <br>
-				<strong>Create Process</strong> untuk menambah kategori processing yang belum ada di database. <br>
-				<strong>Create Line</strong> untuk menambahkan line produksi baru. 
+				<strong>Tambah Produk </strong> untuk menambahkan produk baru dengan number part yang belum pernah di inputkan. <br>
+				<strong>Tambah Process</strong> untuk menambah kategori processing yang belum ada di database. <br>
+				<strong>Tambah Line</strong> untuk menambahkan line produksi baru. 
 				</small>
 			</div>
 		</div>

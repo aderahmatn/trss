@@ -51,7 +51,7 @@
       <li class="nav-item <?php echo $this->uri->segment(1) == 'dashboard' ? 'active': '' ?>">
         <a class="nav-link" href="<?php echo base_url('dashboard'); ?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>Halaman Utama</span></a>
         </li>
 
         <!-- Divider -->
@@ -68,7 +68,7 @@
           <li class="nav-item <?php echo $this->uri->segment(1) == 'schedule' ? 'active': '' ?>">
             <a class="nav-link" href="<?=base_url('schedule'); ?>">
               <i class="far fa fa-cubes"></i>
-              <span>Production</span>
+              <span>Transaksi Production</span>
             </a>
           </li>
         <?php } ?>
@@ -83,13 +83,13 @@
           ">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#masterdata" aria-expanded="true" aria-controls="masterdata">
             <i class="fas fa-server"></i>
-            <span>Master Data</span>
+            <span>Master</span>
           </a>
           <div id="masterdata" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item <?php echo $this->uri->segment(1) == 'planning' ? 'active': '' ?>" href="<?php echo site_url('planning') ?>"><i class="fas fa-crosshairs"></i>  Data Planning</a>
-              <a class="collapse-item <?php echo $this->uri->segment(1) == 'product' ? 'active': '' ?>" href="<?php echo site_url('product') ?>"><i class="fas fa-fw fa-cubes"></i> Data Produk</a>
-              <a class="collapse-item <?php echo $this->uri->segment(1) == 'users' ? 'active': '' ?>" href="<?php echo site_url('users') ?>"><i class="fas fa-fw fa-users"></i>  Data User</a>
+              <a class="collapse-item <?php echo $this->uri->segment(1) == 'planning' ? 'active': '' ?>" href="<?php echo site_url('planning') ?>"><i class="fas fa-crosshairs"></i>  Master Planning</a>
+              <a class="collapse-item <?php echo $this->uri->segment(1) == 'product' ? 'active': '' ?>" href="<?php echo site_url('product') ?>"><i class="fas fa-fw fa-cubes"></i> Master Produk</a>
+              <a class="collapse-item <?php echo $this->uri->segment(1) == 'users' ? 'active': '' ?>" href="<?php echo site_url('users') ?>"><i class="fas fa-fw fa-users"></i>  Master User</a>
             </div>
           </div>
         </li>
@@ -97,7 +97,7 @@
         <li class="nav-item <?php echo $this->uri->segment(1) == 'report' ? 'active': '' ?>">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#report" aria-expanded="true" aria-controls="report">
             <i class="fas fa-file"></i>
-            <span>Report</span>
+            <span>Report Transaksi Production</span>
           </a>
           <div id="report" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">

@@ -4,7 +4,7 @@
 		<div class="card shadow mb-4">
 			<!-- Card Header - Accordion -->
 			<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-				<h6 class="m-0 font-weight-bold text-primary">Data Planning</h6>
+				<h6 class="m-0 font-weight-bold text-primary">Master Planning</h6>
 				<div class="button">
 					<a class="btn btn-primary btn-sm" type="button" href="<?=base_url('planning/create') ?>"><i class="fas fa-plus"></i>
 						New Planning
