@@ -3,7 +3,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
 	<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-		<h6 class="m-0 font-weight-bold text-primary">Laporan Periodik</h6>
+		<h6 class="m-0 font-weight-bold text-primary">Laporan Stok</h6>
 		<div class="button">
 			<form method="post" action="<?=base_url('report/exportStok') ?>">
 				<button type="submit" class="btn btn-primary text-white btn-sm"><i class="fas fa-download"></i>

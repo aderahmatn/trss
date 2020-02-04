@@ -77,7 +77,6 @@
 						</div>
 						<div class="card-footer text-right">
 							<button type="submit" class="btn btn-primary btn-sm shadow-sm"><i class="fas fa-save fa-sm"></i> save</button>
-							<button type="reset" class="btn btn-primary btn-sm shadow-sm"><i class="fas fa-window-close fa-sm"></i> reset</button>
 						</div>
 					</form>
 				</div>
