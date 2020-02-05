@@ -39,7 +39,7 @@
 										<td><?php echo $dt->Qty ?></td>
 
 										<td>
-											<?php if ($this->session->userdata('role') == 1) { ?>   
+											<?php if ($this->session->userdata('role') == 3) { ?>   
 												<a href='#detailPlanning' class='btn btn-sm btn-info' id='custId' data-toggle='modal' data-id="<?php echo $dt->IdPlan ?>"><i class="fa fa-eye"></i></a>
 												<a onclick="deleteConfirm('<?=site_url('schedule/delete/'.$dt->IdPlan)?>')" href="#!" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
 												<?php } ?>

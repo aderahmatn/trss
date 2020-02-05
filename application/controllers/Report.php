@@ -80,6 +80,7 @@ class Report extends CI_Controller {
     $excel->setActiveSheetIndex(0)->setCellValue('F3', "PART NAME"); // Set kolom E3 dengan tulisan "ALAMAT"
     $excel->setActiveSheetIndex(0)->setCellValue('G3', "PLAN QTY"); // Set kolom E3 dengan tulisan "ALAMAT"
     $excel->setActiveSheetIndex(0)->setCellValue('H3', "ACTUAL QTY"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('I3', "OPERATOR"); // Set kolom E3 dengan tulisan "ALAMAT"
     // Apply style header yang telah kita buat tadi ke masing-masing kolom header
     $excel->getActiveSheet()->getStyle('A3')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('B3')->applyFromArray($style_col);
@@ -89,6 +90,7 @@ class Report extends CI_Controller {
     $excel->getActiveSheet()->getStyle('F3')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('G3')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('H3')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('I3')->applyFromArray($style_col);
     // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
     
     $report = $this->report_m->getByRange($tgl1,$tgl2);
@@ -103,6 +105,7 @@ class Report extends CI_Controller {
     	$excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $data->PartName);
     	$excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow, $data->Qty);
     	$excel->setActiveSheetIndex(0)->setCellValue('H'.$numrow, $data->ActualQty);
+        $excel->setActiveSheetIndex(0)->setCellValue('I'.$numrow, strtoupper($data->Fullname));
 
       // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
     	$excel->getActiveSheet()->getStyle('A'.$numrow)->applyFromArray($style_row);
@@ -112,7 +115,8 @@ class Report extends CI_Controller {
     	$excel->getActiveSheet()->getStyle('E'.$numrow)->applyFromArray($style_row);
     	$excel->getActiveSheet()->getStyle('F'.$numrow)->applyFromArray($style_row);
     	$excel->getActiveSheet()->getStyle('G'.$numrow)->applyFromArray($style_row);
-    	$excel->getActiveSheet()->getStyle('H'.$numrow)->applyFromArray($style_row);
+        $excel->getActiveSheet()->getStyle('H'.$numrow)->applyFromArray($style_row);
+    	$excel->getActiveSheet()->getStyle('I'.$numrow)->applyFromArray($style_row);
 
       $no++; // Tambah 1 setiap kali looping
       $numrow++; // Tambah 1 setiap kali looping
@@ -126,6 +130,7 @@ class Report extends CI_Controller {
     $excel->getActiveSheet()->getColumnDimension('F')->setWidth(30); // Set width kolom E
     $excel->getActiveSheet()->getColumnDimension('G')->setWidth(15); // Set width kolom E
     $excel->getActiveSheet()->getColumnDimension('H')->setWidth(15); // Set width kolom E
+    $excel->getActiveSheet()->getColumnDimension('I')->setWidth(20); // Set width kolom E
     
     // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
     $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);

@@ -29,6 +29,7 @@
 					<th>Part Name</th>
 					<th>Qty Plan</th>
 					<th>Qty Actual</th>
+					<th>Operator</th>
 				</tr>
 				<tbody>
 					<?php $no=1;
@@ -42,6 +43,7 @@
 							<td><?php echo $dt->PartName ?></td>
 							<td><?php echo $dt->Qty ?></td>
 							<td><?php echo $dt->ActualQty ?></td>
+							<td><?php echo $dt->Fullname ?></td>
 						</tr>
 					<?php endforeach ?>
 				</tbody>

@@ -8,17 +8,20 @@ class Report_m extends CI_Model {
 	
 	public function getByRange($tgl1, $tgl2)
 	{
-		$this->db->from('tschedule');
-		$this->db->where('Date >=', $tgl1);
-		$this->db->where('Date <=', $tgl2);
-		$this->db->join('ttransaksi', 'ttransaksi.IdSchedule = tschedule.IdSchedule');
+		$this->db->select('*');
+		$this->db->from('ttransaksi');
+		$this->db->join('tschedule', 'tschedule.IdPlan = ttransaksi.IdPlan');
+		$this->db->where('tschedule.Date >=', $tgl1);
+		$this->db->where('tschedule.Date <=', $tgl2);
 		$this->db->join('tplan', 'tplan.Idplan = tschedule.Idplan');
 		$this->db->join('tprocess', 'tprocess.IdProcess = tplan.IdProcess');
 		$this->db->join('tproduk', 'tproduk.IdProduk = tplan.IdProduk');
 		$this->db->join('tline', 'tline.IdLine = tproduk.IdLine');
-		$this->db->order_by('Date','ASC');
+		$this->db->join('tusers', 'tusers.Nik = ttransaksi.Nik');
+		$this->db->order_by('tschedule.Date','ASC');
 		$query = $this->db->get();
 		return $query->result();
+		
 	}
 
 	public function getStok()
