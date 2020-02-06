@@ -30,6 +30,12 @@ class Schedule extends CI_Controller {
 		$validation->set_rules($schedule->rules());
 		$data['plan'] = $this->planning_m->GetAll();
 
+		$nomor = $this->schedule_m->CheckId();
+        // contoh JRD0004, angka 3 adalah awal pengambilan angka, dan 4 jumlah angka yang diambil
+			$nourut = substr($nomor, 3, 4);
+			$newid = $nourut + 1;
+			$data['newid']= array('Id_Sc' => $newid);
+
 		if ($validation->run() == FALSE)
 		{
 			$this->template->load('shared/template', 'schedule/create', $data);

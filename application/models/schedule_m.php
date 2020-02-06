@@ -46,6 +46,13 @@ class Schedule_m extends CI_Model {
 	{
 		return $this->db->delete($this->_table, array('IdPlan' => $id,));
 	}
+
+	public function CheckId()
+    {
+        $query = $this->db->query("SELECT MAX(IdSchedule) as IdSchedule from tschedule");
+        $hasil = $query->row();
+        return $hasil->IdSchedule;
+    }
 }
 
 /* End of file schedule_m.php */
