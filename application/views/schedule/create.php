@@ -10,7 +10,7 @@
 	</div>
 	<div class="card-body">
 		<form action="" method="post">
-			<input type="text" name="idschedule" value="JDW<?= sprintf("%04s",implode('',$newid)) ?>">
+			<input type="hidden" name="idschedule" value="JDW<?= sprintf("%04s",implode('',$newid)) ?>">
 			<div class="form-row">
 				<div class="col-md-5 mb-3">
 					<div class="input-group">

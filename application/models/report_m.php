@@ -8,17 +8,15 @@ class Report_m extends CI_Model {
 	
 	public function getByRange($tgl1, $tgl2)
 	{
-		$this->db->select('*');
+		$this->db->select('*,ttransaksi.CreateDate');
 		$this->db->from('ttransaksi');
-		$this->db->join('tschedule', 'tschedule.IdPlan = ttransaksi.IdPlan');
-		$this->db->where('tschedule.Date >=', $tgl1);
-		$this->db->where('tschedule.Date <=', $tgl2);
-		$this->db->join('tplan', 'tplan.Idplan = tschedule.Idplan');
+		$this->db->join('tplan', 'tplan.Idplan = ttransaksi.Idplan');
 		$this->db->join('tprocess', 'tprocess.IdProcess = tplan.IdProcess');
 		$this->db->join('tproduk', 'tproduk.IdProduk = tplan.IdProduk');
 		$this->db->join('tline', 'tline.IdLine = tproduk.IdLine');
 		$this->db->join('tusers', 'tusers.Nik = ttransaksi.Nik');
-		$this->db->order_by('tschedule.Date','ASC');
+		$this->db->where('ttransaksi.CreateDate >=', $tgl1);
+		$this->db->where('ttransaksi.CreateDate <=', $tgl2);
 		$query = $this->db->get();
 		return $query->result();
 		

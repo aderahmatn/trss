@@ -11,6 +11,7 @@ class Transaksi_m extends CI_Model {
 	public $IdSchedule;
 	public $ActualQty;
 	public $Note;
+	public $CreateDate;
 
 	public function rules()
 	{
@@ -30,6 +31,7 @@ class Transaksi_m extends CI_Model {
 		$this->IdSchedule = $post['idschedule'];
 		$this->ActualQty = $post['actualqty'];
 		$this->Note = $post['note'];
+		$this->CreateDate = $post['createdate'];
 		$this->db->insert($this->_table, $this);
 	}
 }

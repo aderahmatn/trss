@@ -1,3 +1,4 @@
+
 <div class="row">
 	<div class="col-9">
 		<!-- Collapsable Card -->
@@ -16,6 +17,7 @@
 				<div class="card-body">
 					<form action="" method="post">
 						<input type="hidden" name="idtransaksi" id="idtransaksi" value="<?=uniqid('trss')?>" >
+						<input type="hidden" name="createdate" id="createdate" value="<?=$schedule->Date?>" >
 
 						<input type="hidden" name="iduser" id="iduser" value="<?= ucfirst($this->session->userdata('nik'));?>" >
 

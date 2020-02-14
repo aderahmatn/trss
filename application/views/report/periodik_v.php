@@ -36,7 +36,7 @@
 					foreach ($schedule as $dt) :?>
 						<tr>
 							<td><?php echo $no++ ?></td>
-							<td><?php echo $dt->Date ?></td>
+							<td><?php echo $dt->CreateDate ?></td>
 							<td><?php echo $dt->LineName ?></td>
 							<td><?php echo $dt->ProcessName ?></td>
 							<td><?php echo $dt->PartNumber ?></td>
