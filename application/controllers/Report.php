@@ -98,7 +98,7 @@ class Report extends CI_Controller {
     $numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
     foreach($report as $data){ // Lakukan looping pada variabel siswa
     	$excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
-    	$excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $data->Date);
+    	$excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $data->CreateDate);
     	$excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, strtoupper($data->LineName));
     	$excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $data->ProcessName);
     	$excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $data->PartNumber);
